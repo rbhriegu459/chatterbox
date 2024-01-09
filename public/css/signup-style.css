@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #0C243C;
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+}
+
+
+/* -------MAIN FORM BOX ------------ */
+
+.formBx{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 26%;
+    margin-top: 80px;
+}
+
+
+/* ------- LOGO and NAME --------- */
+
+.logo{
+    display: flex;
+}
+
+.logo img{
+    height: 60px;
+    margin:0 13px;
+    width: 60px;
+}
+
+.logo h2{
+    letter-spacing: 2.3px;
+}
+
+
+/* ----SIGNUP FORM ----------- */
+
+.signupForm{
+    padding: 60px;
+    width: 100%;
+    background-color: rgb(18, 11, 38);
+    border-radius: 15px;
+}
+
+.signupForm input{
+    width: 88%;
+    margin: 15px 0;
+    padding: 13px;
+    color: white;
+    background-color: rgb(18, 11, 38);
+    border: 2.5px solid rgb(34, 6, 110);
+    border-radius: 7px;
+}
+
+.signupBtn{
+    width: 100%;
+    margin: 15px 0;
+    padding: 13px;
+    background-color: plum;
+    color: white;
+    font-weight: 800;
+    border: 2.5px solid rgb(34, 6, 110);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.signupBtn:hover{
+    background-color: #0C243C;
+}
+
+h5{
+    letter-spacing: 1.7px;
+}
+
+h5 a{
+    text-decoration: none;
+}
