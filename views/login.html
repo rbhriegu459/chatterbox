@@ -13,7 +13,7 @@
                 <img src="/images/logo.png" alt="logo">
                 <h2>CHATTERBOX</h2>
             </div>
-            <form>
+            <form onsubmit="login(event)">
                 <input type="email" id="email" placeholder="Email"  required> <br>
     
                 <input type="password" id="password" placeholder="Password" required> <br>
@@ -23,5 +23,10 @@
             <h5>DON'T HAVE AN ACCOUNT? <a href="/user/signup">REGISTER</a></h5>
         </div>
     </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="/js/user-front.js"></script>
+
 </body>
 </html>

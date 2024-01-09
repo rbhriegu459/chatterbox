@@ -32,7 +32,24 @@ const getLogin = async (req,res)=>{
 }
 
 const postLogin = async (req,res) => {
+    const {email, password} = req.body;
+    try{
+        const user = await User.findOne({ where: { email } });
 
+        const hashedPassword = user.dataValues.password;
+        const passwordMatch = await bcrypt.compare(password, hashedPassword);
+
+        if(user && passwordMatch) {
+            console.log(user.dataValues);
+            return res.status(201).json({message: 'Login succesful'});
+        }else{
+            throw new Error("User doesn't exists, please Sign up first");
+        }
+    }
+    catch(err){
+        console.error("Login failed", err);
+        res.status(500).json({message : "Login failed "});
+    }
 }
 
 module.exports = {getSignUp, postSignUp, getLogin, postLogin};
