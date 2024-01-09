@@ -10,6 +10,9 @@ const User =sequelize.define('users', {
     },
     username: {type: Sequelize.STRING},
     email:{type: Sequelize.STRING},
+    phonenum:{
+        type:Sequelize.BIGINT
+    },
     password: {type: Sequelize.STRING},
     }, 
     { timestamps: false} //disables createdat and updatedat

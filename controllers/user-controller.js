@@ -8,7 +8,7 @@ const getSignUp = async (req,res)=>{
 
 const postSignUp = async (req,res) => {
     try{
-        const {username, email, password} = req.body;
+        const {username, email, phonenum, password} = req.body;
         const existingUser = await User.findOne({where:{email:email}});
         // Hash the password using bcrypt
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -17,7 +17,7 @@ const postSignUp = async (req,res) => {
             res.status(201).json("User Exists");
         }
         else{
-            const newUser = await User.create({username, email, password:hashedPassword});
+            const newUser = await User.create({username, email, phonenum, password:hashedPassword});
             res.status(204).json("User Created");
         }
     }

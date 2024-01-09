@@ -5,14 +5,17 @@ async function signup(e){
         const signupDetails = {
             username: e.target.username.value,
             email:e.target.email.value,
+            phonenum:e.target.number.value,
             password:e.target.password.value
         }
 
         const response = await axios.post("http://localhost:3000/user/signup", signupDetails)
         if(response.status === 204){
+            alert("Successfully Signed up!")
             window.location.href = "login";
         } else{
-            throw new Error("User email id already exists") ;
+            alert("User email id already exists, Please Login!")
+            // throw new Error("User email id already exists") ;
         }
     }
     catch(err){
