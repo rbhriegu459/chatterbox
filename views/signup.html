@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
-    <link rel="stylesheet" href="../public/css/signup-style.css">
+    <link rel="stylesheet" href="/css/signup-style.css">
 </head>
 <body>
     <div class="formBx">
         <div class="signupForm">
             <div class="logo">
-                <img src="../public/images/logo.png" alt="logo">
+                <img src="/images/logo.png" alt="logo">
                 <h2>CHATTERBOX</h2>
             </div>
-            <form>
+            <form onsubmit="signup(event)">
                 <!-- <label for="username">Username</label> -->
                 <input type="text" id="username" placeholder="Username"  required> <br>
     
@@ -28,5 +28,8 @@
             <h5>ALREADY HAVE ACCOUNT? <a href="/user/login">LOGIN</a></h5>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="/js/user-front.js"></script>
 </body>
 </html>
