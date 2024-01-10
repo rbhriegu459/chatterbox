@@ -1,0 +1,72 @@
+/* 
+ dark blue - #0C243C
+white
+darkest - rgb(18, 11, 38)
+blue - rgb(34, 6, 110
+ */
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #0C243C;
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+}
+
+
+/* --------LOGO -------------- */
+.logo{
+    display: flex;
+}
+
+.logo img{
+    height: 60px;
+    margin:0 13px;
+    width: 60px;
+}
+
+.logo h2{
+    letter-spacing: 2.3px;
+}
+
+
+/* -----Chat groups--- */
+
+.chat-box{
+    display: flex;
+}
+
+.members{
+    width: 25%;
+    background-color: rgb(18, 11, 38);
+    border: 2.5px solid rgb(34, 6, 110);
+}
+
+.chatting{
+    width: 75%;
+    background-color: rgb(18, 11, 38);
+    border: 2.5px solid rgb(34, 6, 110);
+    padding: 20px;
+}
+
+.chatting input{
+    width: 90%;
+    background-color: rgb(18, 11, 38);
+    border: 2.5px solid rgb(34, 6, 110);
+    padding: 10px;
+    color: white;
+}
+
+.sendBtn{
+    border: 0;
+    background-color: rgb(18, 11, 38);
+    color: white;
+    margin: 0;
+    /* height: 40px; */
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.sendBtn i{
+    /* height: 0px; */
+}

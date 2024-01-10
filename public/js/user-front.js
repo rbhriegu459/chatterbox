@@ -14,8 +14,7 @@ async function signup(e){
             alert("Successfully Signed up!")
             window.location.href = "login";
         } else{
-            alert("User email id already exists, Please Login!")
-            // throw new Error("User email id already exists") ;
+            alert("User email id already exists, Please Login!");
         }
     }
     catch(err){
@@ -32,12 +31,12 @@ async function login(e){
             password:e.target.password.value
         }
 
-        console.log(loginDetails);
+        // console.log(loginDetails);
 
         const response = await axios.post("http://localhost:3000/user/login", loginDetails)                    
         alert(response.data.message);
         localStorage.setItem('token', response.data.token);
-        window.location.href ="../";
+        window.location.href ="chat";
     }
     catch(err){
         console.log(JSON.stringify(err));
