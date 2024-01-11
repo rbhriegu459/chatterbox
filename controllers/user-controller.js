@@ -1,6 +1,7 @@
 const path = require('path');
 const User = require('../models/user-model');
 const bcrypt=  require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const getSignUp = async (req,res)=>{
     res.sendFile(path.join(__dirname,'..', 'views', 'signup.html'))
@@ -41,7 +42,7 @@ const postLogin = async (req,res) => {
 
         if(user && passwordMatch) {
             console.log(user.dataValues);
-            return res.status(201).json({message: 'Login succesful'});
+            return res.status(201).json({message: 'Login succesful', token: generateAccessToken(user.dataValues.id, user.dataValues.name)});
         }else{
             throw new Error("User doesn't exists, please Sign up first");
         }
@@ -50,6 +51,12 @@ const postLogin = async (req,res) => {
         console.error("Login failed", err);
         res.status(500).json({message : "Login failed "});
     }
+}
+
+
+function generateAccessToken(id, name){
+    const token= jwt.sign({userId:id, name:name} , 'secretkey');
+    return token;
 }
 
 module.exports = {getSignUp, postSignUp, getLogin, postLogin};

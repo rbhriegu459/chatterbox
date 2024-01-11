@@ -1,7 +1,9 @@
 const express = require('express');
 const sequelize = require('sequelize');
+const io = require('socket.io');
 const bodyParser = require("body-parser");
 const app = express();
+
 require('dotenv').config();
 
 const Port = process.env.PORT;

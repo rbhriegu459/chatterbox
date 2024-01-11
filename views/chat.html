@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/chat-style.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div class="logo">
@@ -15,18 +16,44 @@
     </div>
     <div class="chat-box">
         <div class="members">
-
+            <form class="searchForm">
+                <i class="material-icons">search</i>
+			    <input placeholder="Search here" type="text">
+            </form>
         </div>
         <div class="chatting">
-            <h2>Chatting</h2>
+            <div class="messages">
+                <!-- MESSAGES -->
+                <div class="message my-message">
+                    <!-- <div>
+                        <div class="name">You</div>
+                        <div class="text">Hi</div>
+                    </div> -->
+                </div>
 
-            <form onsubmit="send(event)">
-                <input type="text" placeholder="Text Here...">
+                <div class="update">
+                    ABC joined the conversation
+                </div>
+
+                <div class="message other-message">
+                    <div>
+                        <div class="name">ABC</div>
+                        <div class="text">Hello</div>
+                    </div>
+                </div>
+
+            </div>
+
+        
+            <form onsubmit="send(event)" class="sendForm">
+                <input type="text" placeholder="Text Here..." id="msg">
                 <button class="sendBtn"><i class="material-icons">send</i></button>
             </form>
         </div>
     </div>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="/js/chat-front.js"></script>
+
 </body>
 </html>
