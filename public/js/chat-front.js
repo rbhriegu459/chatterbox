@@ -31,6 +31,7 @@ async function showChatToUI(chat){
 
 async function showChatAsOther(chat, name){
     const addMymsg = document.getElementById('other-message');
+    // const addMymsg = document.getElementsByClassName('messages');
 
     addMymsg.innerHTML +=   `
         <div>
