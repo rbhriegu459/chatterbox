@@ -46,7 +46,6 @@ async function showChatAsOther(chat, name){
 window.addEventListener('DOMContentLoaded',async ()=>{
     const token = localStorage.getItem('token');
     const decodedToken = parseJwt(token);
-    
 
     const response = await axios.get('http://localhost:3000/chat/fetchChat', {headers: {"Authorization":token}})
         response.data.chatsFromDb.forEach(async (chat) =>{
@@ -60,6 +59,14 @@ window.addEventListener('DOMContentLoaded',async ()=>{
             }
         });
 
+        const res= await axios.get(`http://localhost:3000/chat/fetchGroup/${decodedToken.userId}`);
+        res.data.groups.forEach(async (group) => {
+            // document.getElementById('showGroups').appendChild(document.createTextNode(group.group));
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(group.group));
+            document.getElementById('GroupList').appendChild(li);
+        })
+
         // setInterval(location.reload(), 600000);
 });
 
@@ -72,4 +79,13 @@ function parseJwt (token) {
     }).join(''));
 
     return JSON.parse(jsonPayload);
+}
+
+
+
+// ----- Adding group -----
+
+async function addGroup(){
+    window.location.href = 'addGroup';
+    console.log('click group');
 }

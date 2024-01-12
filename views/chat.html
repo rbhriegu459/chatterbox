@@ -16,10 +16,22 @@
     </div>
     <div class="chat-box">
         <div class="members">
+
             <form class="searchForm">
                 <i class="material-icons">search</i>
 			    <input placeholder="Search here" type="text">
             </form>
+
+            <div class="add-group" onclick="addGroup()">
+                <button>&#43; Create Group</button>
+            </div>
+
+            <div id="showGroups">
+                <ul id="GroupList">
+
+                </ul>
+            </div>
+
         </div>
         <div class="chatting">
             <div class="messages">

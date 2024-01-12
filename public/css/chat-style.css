@@ -69,6 +69,20 @@ body{
 }
 
 
+.add-group{
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 8px;
+}
+
+.add-group button{
+    color: white;
+    background-color: rgb(34, 6, 110);
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+}
 
 /* --------Messages--------- */
 
@@ -110,10 +124,6 @@ body{
 .name{
     font-size: 13px;
     color: #626060;
-}
-
-.text{
-    /* word-wrap: break-word; */
 }
 
 .my-message{

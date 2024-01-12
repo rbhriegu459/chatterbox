@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Group</title>
+
+    <link rel="stylesheet" href="/css/addGroup.css">
+</head>
+<body>
+    <div class="formBx">
+        <div class="addGroupForm">
+            <div class="logo">
+                <img src="/images/logo.png" alt="logo">
+                <h2>CHATTERBOX</h2>
+            </div>
+            <h2>Create New Group</h2>
+            <form onsubmit="createGroup(event)">
+                <input type="text" id="groupName" placeholder="Group Name"  required> <br>
+    
+                <button class="createGrp">Create Group</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+
+    <script src="/js/addGroup-front.js"></script>
+</body>
+</html>

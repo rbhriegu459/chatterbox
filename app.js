@@ -13,8 +13,8 @@ const Port = process.env.PORT;
 const userRoute = require('./routes/user');
 const chatRoute = require('./routes/chat');
 
-const server = http.createServer(app);
-const io = socketIo(server);
+const server = require("http").createServer(app);
+const io = require("socket.io")(server) 
 
 io.on('connection', (socket) => {
     console.log('A user connected');
