@@ -10,12 +10,14 @@ const Port = process.env.PORT;
 
 // Routes import
 const userRoute = require('./routes/user');
+const chatRoute = require('./routes/chat');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.use('/user', userRoute);
+app.use('/chat', chatRoute);
 
 // sequelize.sync()
 // .then(result=>{

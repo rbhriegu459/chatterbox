@@ -24,28 +24,22 @@
         <div class="chatting">
             <div class="messages">
                 <!-- MESSAGES -->
-                <div class="message my-message">
-                    <!-- <div>
-                        <div class="name">You</div>
-                        <div class="text">Hi</div>
-                    </div> -->
+                <div class="message my-message" id="my-message">
+                
                 </div>
 
                 <div class="update">
-                    ABC joined the conversation
+                    <!-- ABC joined the conversation -->
                 </div>
 
-                <div class="message other-message">
-                    <div>
-                        <div class="name">ABC</div>
-                        <div class="text">Hello</div>
-                    </div>
+                <div class="message other-message" id="other-message">
+                    
                 </div>
 
             </div>
 
         
-            <form onsubmit="send(event)" class="sendForm">
+            <form onsubmit="send(event)" id="sendForm">
                 <input type="text" placeholder="Text Here..." id="msg">
                 <button class="sendBtn"><i class="material-icons">send</i></button>
             </form>
