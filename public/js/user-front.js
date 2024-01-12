@@ -33,7 +33,6 @@ async function login(e){
             password:e.target.password.value
         }
 
-        // console.log(loginDetails);
 
         const response = await axios.post("http://localhost:3000/user/login", loginDetails)                    
         alert(response.data.message);

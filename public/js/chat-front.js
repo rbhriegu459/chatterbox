@@ -47,6 +47,7 @@ window.addEventListener('DOMContentLoaded',async ()=>{
     const token = localStorage.getItem('token');
     const decodedToken = parseJwt(token);
     
+
     const response = await axios.get('http://localhost:3000/chat/fetchChat', {headers: {"Authorization":token}})
         response.data.chatsFromDb.forEach(async (chat) =>{
             if(chat.userId === decodedToken.userId){
@@ -58,6 +59,8 @@ window.addEventListener('DOMContentLoaded',async ()=>{
                 showChatAsOther(chat.chat, name.data.n.username);
             }
         });
+
+        // setInterval(location.reload(), 600000);
 });
 
 //>>>>>>>>>>>> Decoding jwt token >>>>>>>>>>>>>>

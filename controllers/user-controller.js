@@ -41,7 +41,6 @@ const postLogin = async (req,res) => {
         const passwordMatch = await bcrypt.compare(password, hashedPassword);
 
         if(user && passwordMatch) {
-            console.log(user.dataValues);
             return res.status(201).json({message: 'Login succesful', token: generateAccessToken(user.dataValues.id, user.dataValues.name)});
         }else{
             throw new Error("User doesn't exists, please Sign up first");
