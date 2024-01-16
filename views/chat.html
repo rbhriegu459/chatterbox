@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHATTERBOX</title>
     <link rel="stylesheet" href="/css/chat-style.css">
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
-    <div class="logo">
-        <img src="/images/logo.png" alt="logo">
-        <h2>CHATTERBOX</h2>
+<body class="screen chat-screen active">
+    <div class="nav">
+        <div class="logo">
+            <img src="/images/logo.png" alt="logo">
+            <h2>CHATTERBOX</h2>
+        </div>
+
+        <div class="add-group" onclick="addGroup()">
+            <button>&#43; Create Group</button>
+        </div>
     </div>
     <div class="chat-box">
         <div class="members">
@@ -22,10 +29,6 @@
 			    <input placeholder="Search here" type="text">
             </form>
 
-            <div class="add-group" onclick="addGroup()">
-                <button>&#43; Create Group</button>
-            </div>
-
             <div id="showGroups">
                 <ul id="GroupList">
 
@@ -34,19 +37,15 @@
 
         </div>
         <div class="chatting">
-            <div class="messages">
-                <!-- MESSAGES -->
-                <div class="message my-message" id="my-message">
+            <div class="groupHeader" id="groupHeader">
                 
-                </div>
+            </div>
+            <div class="messages" id="messages">
+                <!-- MESSAGES -->
 
-                <div class="update">
-                    <!-- ABC joined the conversation -->
-                </div>
-
-                <div class="message other-message" id="other-message">
-                    
-                </div>
+                <!-- <div class="update">
+                    ABC joined the conversation
+                </div> -->
 
             </div>
 

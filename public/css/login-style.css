@@ -6,6 +6,11 @@ body{
     font-family:'Courier New', Courier, monospace;
 }
 
+.icon{
+    height: 0px;
+    width: 30px;
+}
+
 .formBx{
     display: flex;
     flex-direction: row;

@@ -5,21 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Group</title>
 
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
     <link rel="stylesheet" href="/css/addGroup.css">
 </head>
 <body>
-    <div class="formBx">
-        <div class="addGroupForm">
-            <div class="logo">
-                <img src="/images/logo.png" alt="logo">
-                <h2>CHATTERBOX</h2>
+    <div class="main">
+        <div class="formBx">
+            <div class="addGroupForm">
+                <div class="logo">
+                    <img src="/images/logo.png" alt="logo">
+                    <h2>CHATTERBOX</h2>
+                </div>
+                <h2>Create New Group</h2>
+                <form onsubmit="addMembers(event)">
+                    <input type="text" id="groupName" placeholder="Group Name"  required> <br>
+        
+                    <button class="createGrp">Add Members</button>
+                </form>
             </div>
-            <h2>Create New Group</h2>
-            <form onsubmit="createGroup(event)">
-                <input type="text" id="groupName" placeholder="Group Name"  required> <br>
+        </div>
     
-                <button class="createGrp">Create Group</button>
-            </form>
+        <div class="formBx" id="memberBox">
+            <div class="addMembers">
+                <div class="logo">
+                    <img src="/images/logo.png" alt="logo">
+                    <h2>CHATTERBOX</h2>
+                </div>
+                <h2>Add Members to the Group</h2>
+                <form onsubmit="createGroup(event)">
+                    <ul id="memberList"></ul>
+                    <button class="createGrp">Create Group</button>
+                </form>
+            </div>
         </div>
     </div>
 

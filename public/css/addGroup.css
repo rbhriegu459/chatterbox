@@ -6,6 +6,10 @@ body{
     font-family:'Courier New', Courier, monospace;
 }
 
+.main{
+    display: flex;
+}
+
 .formBx{
     display: flex;
     flex-direction: row;
@@ -31,7 +35,7 @@ body{
 }
 
 .addGroupForm{
-    padding: 60px;
+    padding: 20px 60px;
     width: 100%;
     background-color: rgb(18, 11, 38);
     border-radius: 15px;
@@ -71,3 +75,37 @@ h5 a{
     text-decoration: none;
 }
 
+#memberBox{
+    visibility: hidden;
+}
+
+.addMembers{
+    padding: 20px 60px;
+    width: 100%;
+    background-color: rgb(18, 11, 38);
+    border-radius: 15px;
+}
+
+#memberList{
+    list-style: none;
+}
+
+#memberList li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3px;
+    padding: 5px;
+    background-color: #0C243C;
+    border-radius: 10px;
+}
+
+#memberList li button{
+    padding: 2px;
+    background-color: plum;
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 30px;
+}

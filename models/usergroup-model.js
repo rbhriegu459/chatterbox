@@ -1,24 +1,18 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-const Chat =sequelize.define('chats', {
+const UserGroup =sequelize.define('usergroups', {
     id:{
         type:Sequelize.INTEGER,
         autoIncrement:true,
         allowNull:false,
         primaryKey:true
     },
-    userId:{
-        type:Sequelize.INTEGER
-    },
-    chat:{
-        type:Sequelize.STRING,
-    },
-    groupName: {
-        type:Sequelize.STRING
-    }
-},
+    groupId:{type: Sequelize.INTEGER},
+    isAdmin:{type:Sequelize.BOOLEAN},
+    userId: {type: Sequelize.INTEGER}
+    }, 
     { timestamps: false} //disables createdat and updatedat
 )
 
-module.exports = Chat;
+module.exports = UserGroup;
