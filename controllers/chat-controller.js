@@ -151,4 +151,15 @@ const exitChat = async function(req,res){
     }
 }
 
-module.exports = {getChat, postChat, groupchats, getName, addGroup, createGroupInDb, fetchGroups, fetchGroupName, allUsers, addUserToGroup, grpId, exitChat};
+const getAvatar =  async (req,res) => {
+    try{
+        const userId = req.params.id;
+        const getUser = await User.findOne({where:{id:userId}});
+        res.status(200).json({getUser});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({err});
+    }
+}
+
+module.exports = {getChat, postChat, groupchats, getName, addGroup, createGroupInDb, fetchGroups, fetchGroupName, allUsers, addUserToGroup, grpId, exitChat, getAvatar};

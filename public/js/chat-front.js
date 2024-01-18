@@ -15,6 +15,12 @@ socket.on('message', (msg, name) => {
 
 window.addEventListener('DOMContentLoaded',async ()=>{
         showGroupsInUi(decodedToken.userId);
+        const avatar = document.querySelector('.avatar');
+        const getAvatarFromDB= await axios.get(`http://localhost:3000/chat/Avatar/${decodedToken.userId}`);
+        console.log(getAvatarFromDB.data.getUser.avatar);
+        const newAvatar= document.createElement('img');
+        newAvatar.src = `/images/${getAvatarFromDB.data.getUser.avatar}`
+        avatar.appendChild(newAvatar);
 });
 
 async function showGroupsInUi(userId){

@@ -2,6 +2,7 @@ const path = require('path');
 const User = require('../models/user-model');
 const bcrypt=  require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { where } = require('sequelize');
 
 const getSignUp = async (req,res)=>{
     res.sendFile(path.join(__dirname,'..', 'views', 'signup.html'))
@@ -53,9 +54,27 @@ const postLogin = async (req,res) => {
 }
 
 
+const avatarPage = async(req,res)=>{
+    res.sendFile(path.join(__dirname, '..', 'views', 'avatar.html'));
+}
+
+const avatarToDb = async(req, res)=>{
+    try{
+        const mail = req.params.email;
+        console.log(req.body.avatar);
+        await User.update({avatar: req.body.avatar}, {where:{email:mail}});
+        res.status(200).json({success:true, message:"updated avatar"});
+    } catch(err){
+        console.log(err);
+        res.status(500).json({success:false, error:err});
+    }
+}
+
 function generateAccessToken(id, name){
     const token= jwt.sign({userId:id, name:name} , 'secretkey');
     return token;
 }
 
-module.exports = {getSignUp, postSignUp, getLogin, postLogin};
+
+
+module.exports = {getSignUp, postSignUp, getLogin, postLogin, avatarPage, avatarToDb};

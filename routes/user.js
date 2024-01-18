@@ -9,4 +9,7 @@ router.post('/signup', userController.postSignUp);
 router.get('/login', userController.getLogin);
 router.post('/login', userController.postLogin);
 
+router.get('/avatar/:email', userController.avatarPage);
+router.post('/avatar/:email', userController.avatarToDb);
+
 module.exports = router;

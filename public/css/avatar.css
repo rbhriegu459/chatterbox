@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #0C243C;
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.main-avatar{
+    margin-top: 13rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatars{
+    display: flex;
+    justify-content: center;
+}
+
+.avatar img{
+    height: 80px;
+    width: 80px;
+    margin: 20px;
+    cursor: pointer;
+}

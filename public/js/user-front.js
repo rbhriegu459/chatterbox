@@ -9,12 +9,12 @@ async function signup(e){
             password:e.target.password.value
         }
 
-        const response = await axios.post("http://localhost:3000/user/signup", signupDetails)
-
+        const response = await axios.post("http://localhost:3000/user/signup", signupDetails);
+        
         if(response.status === 204){
             alert("Successfully Signed up!");
             localStorage.setItem('token', response.data.token);
-            window.location.href = "login";
+            window.location.href = `avatar/${signupDetails.email}`;
         } else{
             alert("User email id already exists, Please Login!");
         }

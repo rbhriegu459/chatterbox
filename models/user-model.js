@@ -14,6 +14,7 @@ const User =sequelize.define('users', {
         type:Sequelize.BIGINT
     },
     password: {type: Sequelize.STRING},
+    avatar:{type: Sequelize.STRING}
     }, 
     { timestamps: false} //disables createdat and updatedat
 )
