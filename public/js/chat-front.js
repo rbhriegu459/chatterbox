@@ -1,15 +1,20 @@
 // ------ WHEN PAGE LOADED ---------
 const token = localStorage.getItem('token');
 const decodedToken = parseJwt(token);
+const socket = io();
 
+// recieve message
+socket.on('message', (msg, name) => {
+    if(name==="YOU"){
+        showChatToUI(msg);
+    } else{
+        showChatAsOther(msg.chat, name);
+    }
+    // console.log(msg, name);
+})
 
 window.addEventListener('DOMContentLoaded',async ()=>{
-
         showGroupsInUi(decodedToken.userId);
-
-        // showRestGroups();
-
-        // setInterval(location.reload(), 600000);
 });
 
 async function showGroupsInUi(userId){
@@ -27,26 +32,6 @@ async function showGroupsInUi(userId){
         });
 }
 
-// async function showRestGroups(){
-//     const y = await axios.get(`http://localhost:3000/chat/allgroups`);
-
-//         y.data.g.forEach(async (grpp) => {
-//             // if(grpp.admin !== decodedToken.userId ){
-//             //     const li = document.createElement('li');
-//             //     li.appendChild(document.createTextNode(grpp.group));
-//             //     const join = document.createElement('button');
-//             //     join.innerHTML += `&#43; join group`;
-//             //     li.appendChild(join);
-                
-//             //     join.id= 'grpJoinId';
-//             //     join.addEventListener('click' , joingroup);
-//             //     document.getElementById('GroupList').appendChild(li);
-
-//             // }
-
-//         })
-// }
-
 // USING POST REQUEST postChat from chatController -------
 async function send(e){
     e.preventDefault();
@@ -58,6 +43,8 @@ async function send(e){
         };
         const postSend = await axios.post('http://localhost:3000/chat/chat', chatDetails, {headers: {"Authorization":token}});
         showChatToUI(chatDetails.chat);
+        const name = await axios.get(`http://localhost:3000/chat/getName/${decodedToken.userId}`);
+        socket.emit('message', chatDetails, name.data.n.username);
         document.getElementById("sendForm").reset();
     }
     catch(err){
@@ -65,21 +52,22 @@ async function send(e){
     }
 }
 
-
 async function seeGroupChat(e){
     e.preventDefault();
     try{
         const groupName = e.target.innerHTML;
         localStorage.setItem('activeGroup', groupName);
         const getChats =await axios.get(`http://localhost:3000/chat/groupChat/${groupName}`);
-        console.log(getChats.data.response);
         document.getElementById("messages").innerHTML = ""
+        console.log(getChats.data.response);
         getChats.data.response.forEach(async (chat) => {
+            console.log("chat.userId>>",chat.userId, "decoded userid", decodedToken.userId);
             if(chat.userId === decodedToken.userId){
                 showChatToUI(chat.chat);
             } else{
                 const name = await axios.get(`http://localhost:3000/chat/getName/${chat.userId}`);
-                showChatAsOther(chat.chat, name.data.n.username);
+                const username = name.data.n.username
+                showChatAsOther(chat.chat, username);
             }
         });
 

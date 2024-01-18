@@ -2,10 +2,11 @@ const express = require('express');
 const sequelize = require('sequelize');
 const bodyParser = require("body-parser");
 const app = express();
+const http = require('http').createServer(app);
 
 require('dotenv').config();
 
-const Port = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // Routes import
 const userRoute = require('./routes/user');
@@ -28,4 +29,16 @@ app.use('/chat', chatRoute);
 //     console.log("Database Error setting Sequelize",err);
 // });
 
-app.listen(Port);
+http.listen(PORT, ()=>{
+    console.log(`Listening on PORT ${PORT}`);
+});
+
+// socket
+const io = require('socket.io')(http);
+
+io.on('connection', (socket) => {
+    console.log("connected..");
+    socket.on('message', (msg, name)=>{
+        socket.broadcast.emit('message', msg, name);
+    })
+})
