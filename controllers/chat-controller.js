@@ -162,4 +162,34 @@ const getAvatar =  async (req,res) => {
     }
 }
 
-module.exports = {getChat, postChat, groupchats, getName, addGroup, createGroupInDb, fetchGroups, fetchGroupName, allUsers, addUserToGroup, grpId, exitChat, getAvatar};
+// -----Fetch Admin group----
+const fetchAdmin = async (req,res)=>{
+    try{
+        const groupName = req.params.groupName;
+        console.log(groupName);
+        const group = await Group.findOne({where:{group:groupName}});
+        const isAdmin = group.dataValues.admin;
+        console.log(isAdmin);
+        res.status(200).json({isAdmin});
+    }catch(err){
+        res.status(500).json({error:err});
+    }
+}
+
+const allGroupMembers = async (req,res) => {
+    const groupName = req.params.group;
+
+    try{
+        const getGroupId = await Group.findOne({where:{group:groupName}});
+        const groupId = getGroupId.dataValues.id;
+        const userGroups = await UserGroup.findAll({where:{groupId:groupId}});
+        res.status(200).json({userGroups});
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({error:err});
+    }
+
+}
+
+module.exports = {getChat, postChat, groupchats, getName, addGroup, createGroupInDb, fetchGroups, fetchGroupName, allUsers, addUserToGroup, grpId, exitChat, getAvatar, fetchAdmin, allGroupMembers};

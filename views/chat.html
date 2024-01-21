@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body class="screen chat-screen active">
     <div class="nav">
@@ -20,7 +19,7 @@
         </div>
         
         <div class="profile">
-            <div class="username"><h4>Username</h4></div>
+            <div class="username"></div>
             <div class="avatar"></div>
         </div>
     
@@ -30,7 +29,7 @@
         <div class="members">
 
             <div class="add-group" onclick="addGroup()">
-                <button>&#43; Create Group</button>
+                <button>&#43;Create Group</button>
             </div>
 
             <form class="searchForm">
@@ -48,8 +47,8 @@
         </div>
         <div class="chatting">
             <div class="groupHeader" id="groupHeader">
-                
             </div>
+
             <div class="messages" id="messages">
                 <!-- MESSAGES -->
 
@@ -58,8 +57,6 @@
                 </div> -->
 
             </div>
-
-            
             
             
             <form onsubmit="send(event)" id="sendForm">
@@ -67,10 +64,14 @@
                 <button class="sendBtn"><i class="material-icons">send</i></button>
             </form>
         </div>
+        <div id="listMembers" class="listMembers">
+            <ul id="memberList"></ul>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="/js/chat-front.js"></script>
 
 </body>

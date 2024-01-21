@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHATTERBOX</title>
+    <link rel="stylesheet" href="/css/main-style.css">
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <div class="logo">
+                <h2>-- WELCOME TO</h2>
+                <img src="/images/logo.png" alt="logo">
+                <h2>CHATTERBOX --</h2>
+            </div>
+        </div>
+
+        <div class="divs">
+            <div class="displays">
+                <h3>NEW USER?</h3>
+                <button id="signup">REGISTER</button>
+            </div>
+            <div class="displays">
+                <h3>ALREADY A USER?</h3>
+                <button id="login">LOGIN</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const login = document.getElementById('login');
+        const signup = document.getElementById('signup');
+
+        login.addEventListener("click", openLogin);
+        signup.addEventListener("click", openSignup);
+
+        function openLogin(e){
+            e.preventDefault();
+            window.location.href="user/login";
+        }
+
+        function openSignup(e){
+            e.preventDefault();
+            window.location.href="user/signup";
+        }
+    </script>
+</body>
+</html>

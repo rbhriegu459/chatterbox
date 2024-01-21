@@ -55,7 +55,8 @@ body{
     width: 100%;
     margin: 15px 0;
     padding: 13px;
-    background-color: plum;
+    background-color: #0C243C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(104, 102, 102, 0.19);
     color: white;
     font-weight: 800;
     border: 2.5px solid rgb(34, 6, 110);
@@ -64,7 +65,7 @@ body{
 }
 
 .createGrp:hover{
-    background-color: #0C243C;
+    background-color: plum;
 }
 
 h5{
@@ -102,10 +103,15 @@ h5 a{
 
 #memberList li button{
     padding: 2px;
-    background-color: plum;
+    background-color: #0C243C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(207, 197, 197, 0.19);
     color: white;
     font-weight: 700;
     border-radius: 10px;
     cursor: pointer;
     height: 30px;
+}
+
+#memberList li button:hover{
+    background-color: plum;
 }

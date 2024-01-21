@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #0C243C;
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+}
+
+/* --------LOGO -------------- */
+.nav{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.logo{
+    display: flex;
+}
+
+.logo img{
+    height: 60px;
+    margin:0 13px;
+    width: 60px;
+}
+
+.logo h2{
+    letter-spacing: 2.3px;
+}
+
+
+.main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(18, 11, 38);
+    width: 60%;
+    padding: 3rem;
+    margin-top: 6%;
+    border: 2.5px solid rgb(34, 6, 110);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.divs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.displays{
+    padding: 30px;
+    margin: 40px;
+    width: 20rem;
+    display: flex;
+    background-color: #0C243C;
+    flex-direction: column;
+    align-items: center;
+    border: 2.5px solid rgb(34, 6, 110);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+.displays button{
+    width: 60%;
+    margin: 15px 0;
+    padding: 13px;
+    background-color: plum;
+    color: white;
+    font-weight: 800;
+    border: 2.5px solid rgb(34, 6, 110);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(207, 197, 197, 0.19);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.displays button:hover{
+    background-color: #0C243C;
+}

@@ -43,6 +43,7 @@ body{
     padding: 60px;
     width: 100%;
     background-color: rgb(18, 11, 38);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;
 }
 
@@ -64,6 +65,7 @@ body{
     color: white;
     font-weight: 800;
     border: 2.5px solid rgb(34, 6, 110);
+    box-shadow: 0 4px z8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(207, 197, 197, 0.19);
     border-radius: 10px;
     cursor: pointer;
 }

@@ -10,18 +10,48 @@ socket.on('message', (msg, name) => {
     } else{
         showChatAsOther(msg.chat, name);
     }
-    // console.log(msg, name);
 })
 
 window.addEventListener('DOMContentLoaded',async ()=>{
         showGroupsInUi(decodedToken.userId);
-        const avatar = document.querySelector('.avatar');
-        const getAvatarFromDB= await axios.get(`http://localhost:3000/chat/Avatar/${decodedToken.userId}`);
-        console.log(getAvatarFromDB.data.getUser.avatar);
-        const newAvatar= document.createElement('img');
-        newAvatar.src = `/images/${getAvatarFromDB.data.getUser.avatar}`
-        avatar.appendChild(newAvatar);
+        getProfile();
+        getContacts();
 });
+
+async function getContacts(){
+    
+    const allUsers = await axios.get("http://localhost:3000/chat/allMembers");
+
+    const ul  =document.getElementById("memberList");
+    ul.innerHTML = "";
+    const h3 = document.createElement('h3');
+    h3.innerHTML = "All Contacts :";
+    ul.appendChild(h3);
+    allUsers.data.users.forEach(async (user) => {
+        if(user.id !== decodedToken.userId){
+            const li = document.createElement('li');
+            li.innerHTML = user.username;
+            li.id = "allContacts";
+            ul.appendChild(li);
+        }
+    })
+}
+
+async function getProfile(){
+    // -----Avatar-----
+    const avatar = document.querySelector('.avatar');
+    const getAvatarFromDB= await axios.get(`http://localhost:3000/chat/Avatar/${decodedToken.userId}`);
+    const newAvatar= document.createElement('img');
+    newAvatar.src = `/images/${getAvatarFromDB.data.getUser.avatar}`
+    avatar.appendChild(newAvatar);
+
+    //----Username-----
+    const name = await axios.get(`http://localhost:3000/chat/getName/${decodedToken.userId}`);
+    const username = document.querySelector('.username');
+    const h4 = document.createElement('h4');
+    h4.innerHTML = name.data.n.username;
+    username.appendChild(h4);
+}
 
 async function showGroupsInUi(userId){
     const res= await axios.get(`http://localhost:3000/chat/fetchGroup/${userId}`);
@@ -63,11 +93,10 @@ async function seeGroupChat(e){
     try{
         const groupName = e.target.innerHTML;
         localStorage.setItem('activeGroup', groupName);
+
         const getChats =await axios.get(`http://localhost:3000/chat/groupChat/${groupName}`);
-        document.getElementById("messages").innerHTML = ""
-        console.log(getChats.data.response);
+        document.getElementById("messages").innerHTML = "";
         getChats.data.response.forEach(async (chat) => {
-            console.log("chat.userId>>",chat.userId, "decoded userid", decodedToken.userId);
             if(chat.userId === decodedToken.userId){
                 showChatToUI(chat.chat);
             } else{
@@ -84,21 +113,96 @@ async function seeGroupChat(e){
     }
 }
 
-function addChatHeader(groupName){
+async function addChatHeader(groupName){
     const headerDiv = document.getElementById('groupHeader');
 
         headerDiv.innerHTML =  "";
+
         const grpNameH3= document.createElement('h3');
         grpNameH3.textContent = groupName;
-        console.log("elements created");
 
+        const head = document.createElement('div');
         const exitBtn = document.createElement('button');
         exitBtn.id = "exitChat";
         exitBtn.appendChild(document.createTextNode("Exit Chat"));
         exitBtn.addEventListener("click", exitChat);
 
+        const seeMembers = document.createElement('button');
+        seeMembers.id = "seeMembers";
+        seeMembers.appendChild(document.createTextNode("See Members"));
+        seeMembers.addEventListener("click", seeMembersAsList);
+
+        head.appendChild(exitBtn);
+        head.appendChild(seeMembers);
         headerDiv.appendChild(grpNameH3);
-        headerDiv.appendChild(exitBtn);
+        
+        const admin = await axios.get(`http://localhost:3000/chat/fetchAdmin/${groupName}`);
+        if(admin.data.isAdmin === decodedToken.userId){
+            const addMember = document.createElement('button');
+            addMember.id = "addMember";
+            addMember.appendChild(document.createTextNode("Add Member"));
+            addMember.addEventListener("click", AddMemberList);
+            head.appendChild(addMember);
+        }
+
+        headerDiv.appendChild(head);
+}
+
+async function seeMembersAsList(e){
+    e.preventDefault();
+    const activeGroup = localStorage.getItem('activeGroup');
+
+    const allGroupMembers = await axios.get(`http://localhost:3000/chat/allGroupMembers/${activeGroup}`);
+    const ul  =document.getElementById("memberList");
+    ul.innerHTML = ""
+    const h3 = document.createElement('h3');
+    h3.innerHTML = "Members :";
+    ul.appendChild(h3);
+    allGroupMembers.data.userGroups.forEach(async (user) => { 
+        const li = document.createElement('li');
+        const name = await axios.get(`http://localhost:3000/chat/getName/${user.userId}`);
+        li.id = "memberListLi"
+        li.innerHTML = name.data.n.username;
+        ul.appendChild(li);
+    })
+}
+
+async function AddMemberList(){
+    // document.getElementById('listMembers').style.visibility = "visible";
+    
+    const allUsers = await axios.get("http://localhost:3000/chat/allMembers");
+
+    const ul  =document.getElementById("memberList");
+    ul.innerHTML = ""
+    allUsers.data.users.forEach(async (user) => {
+        if(user.id !== decodedToken.userId){
+            const h3 = document.createElement('h3');
+            h3.innerHTML = "Add Members :";
+            ul.appendChild(h3);
+            const li = document.createElement('li');
+            li.innerHTML = user.username;
+            li.id = "membersToAdd";
+            const addBtn = document.createElement("button");
+            addBtn.id= "memberAdded";                
+            addBtn.appendChild(document.createTextNode("+ Add"));
+            li.appendChild(addBtn);
+            ul.appendChild(li);
+
+                // addBtn.addEventListener("click", addMemberToGoup(event, groupName.group, user.id));
+                // addBtn.addEventListener("click", async function(e) {
+                //     e.preventDefault();
+                //     console.log("clicked");
+                //     const grpId = await axios.get(`http://localhost:3000/chat/grpId/${groupName.group}`);
+                //     const groupDetails = {
+                //         groupId:grpId.data.x.id,
+                //         isAdmin:false,
+                //         userId:user.id
+                //     }
+                //     await axios.post("http://localhost:3000/chat/addUserToGroup", groupDetails, {headers: {"Authorization":token}})
+                //     document.getElementById("memberAdded").style.visibility = "hidden";
+                // });
+            }
+        })
 }
 
 async function showChatToUI(chat){
@@ -145,7 +249,6 @@ async function exitChat(e){
             alert("Left group successfully");
             location.reload();
         }
-        console.log("exit");
     }catch(err){
         console.log(err);
     }

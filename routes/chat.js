@@ -28,7 +28,13 @@ router.get('/getName/:id', chatController.getName);
 // ---exit group----
 router.get('/exitGroup/:grp/:id' , chatController.exitChat);
 
+// -----Fetching group members --------
+router.get('/allGroupMembers/:group', chatController.allGroupMembers);
 
 // Avatar
 router.get('/Avatar/:id', chatController.getAvatar);
+
+// Fetch Admin group
+router.get('/fetchAdmin/:groupName', chatController.fetchAdmin);
+
 module.exports = router;

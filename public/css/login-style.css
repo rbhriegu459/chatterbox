@@ -40,6 +40,7 @@ body{
     width: 100%;
     background-color: rgb(18, 11, 38);
     border-radius: 15px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .loginForm input{
@@ -62,6 +63,7 @@ body{
     border: 2.5px solid rgb(34, 6, 110);
     border-radius: 10px;
     cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(207, 197, 197, 0.19);
 }
 
 .loginBtn:hover{

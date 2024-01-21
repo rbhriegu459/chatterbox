@@ -61,10 +61,11 @@ body{
 }
 
 .members{
-    width: 25%;
+    width: 20%;
     background-color: rgb(18, 11, 38);
     border: 2.5px solid rgb(34, 6, 110);
     padding: 10px;
+    overflow-y: scroll;
 }
 
 .searchForm{
@@ -103,12 +104,17 @@ body{
 
 .add-group button{
     padding: 5px;
-    background-color: plum;
+    background-color: #0C243C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(207, 197, 197, 0.19);
     color: white;
     font-weight: 800;
-    /* border: 2.5px solid rgb(34, 6, 110); */
     border-radius: 10px;
     cursor: pointer;
+}
+
+.add-group button:hover{
+    background-color: plum;
+    color: black;
 }
 
 #GroupList{
@@ -117,7 +123,6 @@ body{
 }
 
 #GroupList li{
-    /* list-style: none; */
     width: 95%;
     display: flex;
     border: 2.5px solid rgb(34, 6, 110);
@@ -125,7 +130,6 @@ body{
     margin: 3px 0;
     display: flex;
     justify-content: space-between;
-    
 }
 
 #grpJoinId{
@@ -140,7 +144,7 @@ body{
 /* --------Messages--------- */
 
 .chatting{
-    width: 75%;
+    width: 60%;
     background-color: plum;
     border: 2.5px solid rgb(34, 6, 110);
     display: flex;
@@ -159,14 +163,36 @@ body{
     color: white;
 }
 
-#exitChat{
-    padding: 2px;
-    background-color: plum;
+#exitChat, #addMember, #seeMembers, #memberAdded{
+    padding: 4px;
     color: white;
     font-weight: 700;
     border-radius: 10px;
     cursor: pointer;
+    background-color: #0C243C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(207, 197, 197, 0.19);
     height: 30px;
+    margin-right: 10px;
+}
+
+#memberAdded:hover{
+    background-color: plum;
+    color: black;
+}
+
+#exitChat:hover{
+    background-color: plum;
+    color: black;
+}
+
+#addMember:hover{
+    background-color: plum;
+    color: black;
+}
+
+#seeMembers:hover{
+    background-color: plum;
+    color: black;
 }
 
 .messages{
@@ -181,9 +207,10 @@ body{
 }
 
 .message div{
-    max-width:  80%;
     background-color: rgb(34, 6, 110);
-    padding: 6px;
+    max-width:  80%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 7px;
 }
 
 .update{
@@ -208,11 +235,25 @@ body{
     justify-content: flex-start;
 }
 
+/* ----Group Members List--- */
+.listMembers{
+    background-color: rgb(18, 11, 38);
+    width: 20%;
+}
 
+#memberList{
+    list-style: none;
+    padding: 0;
+    margin: 5px;
+}
 
+#memberListLi, #membersToAdd, #allContacts{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid rgb(34, 6, 110)
+}
 
 /* ------------SEND BUTTON------------- */
-
 #sendForm{
     display: flex;
     width: 100%;
@@ -233,3 +274,26 @@ body{
     color: white;
     cursor: pointer;
 }
+
+/* ------------ Scroll Bar -----------------*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(34, 6, 110);
+    border: 0.5px solid white;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

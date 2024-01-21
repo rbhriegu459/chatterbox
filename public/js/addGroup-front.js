@@ -21,7 +21,6 @@ async function addMembers(e){
             if(user.id !== decodedToken.userId){
                 const ul  =document.getElementById("memberList");
 
-                ul.innerHTML = "";
                 const li = document.createElement('li');
                 li.innerHTML = user.username;
                 const addBtn = document.createElement("button");
@@ -30,10 +29,8 @@ async function addMembers(e){
                 li.appendChild(addBtn);
                 ul.appendChild(li);
 
-                // addBtn.addEventListener("click", addMemberToGoup(event, groupName.group, user.id));
                 addBtn.addEventListener("click", async function(e) {
                     e.preventDefault();
-                    console.log("clicked");
                     const grpId = await axios.get(`http://localhost:3000/chat/grpId/${groupName.group}`);
                     const groupDetails = {
                         groupId:grpId.data.x.id,
